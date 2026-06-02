@@ -1,0 +1,69 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:models="using:AppListaTelefonica.Models"
+        x:Class="AppListaTelefonica.Views.GestaoUtilizadoresWindow"
+        Title="Gerir Utilizadores - ListaTel"
+        Width="900" Height="600"
+        WindowStartupLocation="CenterScreen"
+        Background="#F8FAFC">
+
+    <Grid RowDefinitions="Auto, *">
+        
+        <Border Grid.Row="0" Background="White" BorderBrush="#E2E8F0" BorderThickness="0,0,0,1" Padding="24,16">
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                    <TextBlock Text="Gestao de Utilizadores" FontSize="18" FontWeight="SemiBold" Foreground="#0F172A"/>
+                </StackPanel>
+                <Button DockPanel.Dock="Right" Name="BtnVoltar" Content="Voltar" Background="Transparent" 
+                        Foreground="#475569" Padding="12,8" BorderBrush="#CBD5E1" BorderThickness="1"
+                        CornerRadius="6" FontSize="12" Click="BtnVoltar_Click"/>
+            </DockPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" Margin="24">
+            <StackPanel Spacing="16">
+                
+                <Border Name="BorderMensagem" Background="#FEF2F2" BorderBrush="#FCA5A5" 
+                        BorderThickness="1" CornerRadius="6" Padding="10" IsVisible="False">
+                    <TextBlock Name="TxtMensagem" Foreground="#DC2626" FontSize="12"/>
+                </Border>
+
+                <Border Background="White" CornerRadius="10" Padding="16" BorderBrush="#E2E8F0" BorderThickness="1">
+                    <StackPanel Spacing="12">
+                        <TextBlock Name="TxtContador" Text="0 utilizadores" FontSize="12" Foreground="#64748B"/>
+                        <DataGrid Name="GridUtilizadores" AutoGenerateColumns="False" IsReadOnly="True" 
+                                  GridLinesVisibility="Horizontal" x:DataType="models:Utilizador">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="2*"/>
+                                <DataGridTextColumn Header="Cargo" Binding="{Binding Cargo}" Width="1*"/>
+                                <DataGridTextColumn Header="U. Organica" Binding="{Binding UnidadeOrganica}" Width="1.5*"/>
+                                <DataGridCheckBoxColumn Header="Ativo" Binding="{Binding Ativo}" Width="0.7*"/>
+                                <DataGridCheckBoxColumn Header="Verificado" Binding="{Binding EmailVerificado}" Width="0.8*"/>
+                                <DataGridTemplateColumn Header="Acoes" Width="2*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate x:DataType="models:Utilizador">
+                                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                                <Button Content="Admin" Background="#8B5CF6" Foreground="White" 
+                                                    Padding="8,4" CornerRadius="4" FontSize="11"
+                                                    Click="BtnTornarAdmin_Click" Tag="{Binding Id}"/>
+                                                <Button Content="Normal" Background="#3B82F6" Foreground="White" 
+                                                    Padding="8,4" CornerRadius="4" FontSize="11"
+                                                    Click="BtnTornarNormal_Click" Tag="{Binding Id}"/>
+                                                <Button Content="Ativar/Desativar" Background="#F59E0B" Foreground="White" 
+                                                    Padding="8,4" CornerRadius="4" FontSize="11"
+                                                    Click="BtnToggleAtivo_Click" Tag="{Binding Id}"/>
+                                                <Button Content="Eliminar" Background="#EF4444" Foreground="White" 
+                                                    Padding="8,4" CornerRadius="4" FontSize="11"
+                                                    Click="BtnEliminar_Click" Tag="{Binding Id}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

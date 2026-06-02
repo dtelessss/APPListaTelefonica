@@ -1,0 +1,82 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="AppListaTelefonica.Views.LoginWindow"
+        Title="Iniciar Sessão - ListaTel"
+        Width="420" Height="520"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        Background="#F9FAFB">
+
+    <Grid RowDefinitions="Auto, *">
+        
+        <!-- Header -->
+        <Border Grid.Row="0" Background="White" BorderBrush="#E5E7EB" BorderThickness="0,0,0,1" Padding="24,16">
+            <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                <Border Background="#1B5E8A" CornerRadius="7" Width="32" Height="32">
+                    <TextBlock Text="LT" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                               Foreground="White" FontWeight="Bold" FontSize="14"/>
+                </Border>
+                <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" Foreground="#111827">
+                    Lista<Run Foreground="#1B5E8A" FontWeight="Bold">Tel</Run>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <!-- Formulário -->
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Margin="40,30" Spacing="20" VerticalAlignment="Center">
+                
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Bem-vindo de volta" FontSize="22" FontWeight="Medium" Foreground="#111827"/>
+                    <TextBlock Text="Introduza as suas credenciais para aceder" FontSize="13" Foreground="#6B7280"/>
+                </StackPanel>
+
+                <!-- Email -->
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Email profissional" FontSize="12" FontWeight="Medium" Foreground="#374151"/>
+                    <Border BorderBrush="#D1D5DB" BorderThickness="1" CornerRadius="6" Background="White">
+                        <TextBox Name="TxtEmail" PlaceholderText="exemplo@organizacao.pt" 
+                                 Padding="12,10" BorderThickness="0" Background="Transparent"/>
+                    </Border>
+                </StackPanel>
+
+                <!-- Password -->
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Palavra-passe" FontSize="12" FontWeight="Medium" Foreground="#374151"/>
+                    <Border BorderBrush="#D1D5DB" BorderThickness="1" CornerRadius="6" Background="White">
+                        <TextBox Name="TxtPassword" PasswordChar="●" 
+                                 PlaceholderText="••••••••••••" Padding="12,10" 
+                                 BorderThickness="0" Background="Transparent"/>
+                    </Border>
+                </StackPanel>
+
+                <!-- Manter sessão -->
+                <CheckBox Name="ChkManterSessao" Content="Manter sessão iniciada" 
+                          FontSize="12" Foreground="#6B7280"/>
+
+                <!-- Mensagem de erro -->
+                <Border Name="BorderErro" Background="#FEF2F2" BorderBrush="#FCA5A5" 
+                        BorderThickness="1" CornerRadius="6" Padding="10" IsVisible="False">
+                    <TextBlock Name="TxtErro" Foreground="#DC2626" FontSize="12" TextWrapping="Wrap"/>
+                </Border>
+
+                <!-- Botões -->
+                <StackPanel Spacing="10">
+                    <Button Name="BtnLogin" Content="Iniciar Sessão" Background="#1B5E8A" 
+                            Foreground="White" Padding="14,10" FontWeight="Medium" FontSize="13"
+                            CornerRadius="6" Click="BtnLogin_Click"/>
+                    
+                    <Button Name="BtnRegistar" Content="Criar Conta" Background="Transparent" 
+                            Foreground="#374151" Padding="14,10" FontSize="13"
+                            BorderBrush="#D1D5DB" BorderThickness="1" CornerRadius="6" 
+                            Click="BtnRegistar_Click"/>
+                    
+                    <Button Name="BtnRecuperarPassword" Content="Esqueci a minha palavra-passe" 
+                            Background="Transparent" Foreground="#1B5E8A" FontSize="12"
+                            Click="BtnRecuperarPassword_Click" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
