@@ -509,4 +509,51 @@ public class DatabaseService
             AtualizadoEm = reader.GetDateTime(10)
         };
     }
+
+    public async Task<List<Contacto>> ObterContactosPublicos(string? termoPesquisa = null, string? unidadeOrganica = null)
+    {
+        // Esta query garante que vamos buscar contactos apenas a listas públicas (onde tipo = 'publica')
+        string sql = @"
+            SELECT c.id, c.list_id, c.nome, c.unidade_organica, c.numero_interno, c.empresa, 
+                   c.emails, c.numeros_contacto, c.criado_em
+            FROM contacts c
+            INNER JOIN lists l ON c.list_id = l.id
+            WHERE l.tipo = 'publica'";
+
+        var parametros = new List<(string, object)>();
+
+        // Filtro por texto livre (nome ou numero interno)
+        if (!string.IsNullOrWhiteSpace(termoPesquisa))
+        {
+            sql += " AND (c.nome ILIKE @termo OR c.numero_interno ILIKE @termo)";
+            parametros.Add(("@termo", $"%{termoPesquisa}%"));
+        }
+
+        // Filtro por Unidade Orgânica (se não for a opção 'Todas')
+        if (!string.IsNullOrWhiteSpace(unidadeOrganica) && unidadeOrganica != "Todas as unidades orgânicas")
+        {
+            sql += " AND c.unidade_organica = @unidade";
+            parametros.Add(("@unidade", unidadeOrganica));
+        }
+
+        sql += " ORDER BY c.nome ASC";
+
+        return await ExecutarQueryLista(sql, MapearContacto, parametros.ToArray());
+    }
+
+    private Contacto MapearContacto(NpgsqlDataReader reader)
+    {
+        return new Contacto
+        {
+            Id = reader.GetGuid(0),
+            ListId = reader.GetGuid(1),
+            Nome = reader.GetString(2),
+            UnidadeOrganica = reader.IsDBNull(3) ? null : reader.GetString(3),
+            NumeroInterno = reader.IsDBNull(4) ? null : reader.GetString(4),
+            Empresa = reader.IsDBNull(5) ? null : reader.GetString(5),
+            Emails = reader.IsDBNull(6) ? Array.Empty<string>() : (string[])reader.GetValue(6), // Array do Postgres
+            NumerosContacto = reader.IsDBNull(7) ? Array.Empty<string>() : (string[])reader.GetValue(7), // Array do Postgres
+            CriadoEm = reader.GetDateTime(8)
+        };
+    }
 }
