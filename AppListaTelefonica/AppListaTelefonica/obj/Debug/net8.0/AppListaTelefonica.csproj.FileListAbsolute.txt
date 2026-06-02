@@ -1,0 +1,7 @@
+C:\Users\candeias\Desktop\ProjetoCM2026\AppListaTelefonica\AppListaTelefonica\obj\Debug\net8.0\AppListaTelefonica.csproj.AssemblyReference.cache
+C:\Users\candeias\Desktop\ProjetoCM2026\AppListaTelefonica\AppListaTelefonica\obj\Debug\net8.0\Avalonia\Resources.Inputs.cache
+C:\Users\candeias\Desktop\ProjetoCM2026\AppListaTelefonica\AppListaTelefonica\obj\Debug\net8.0\Avalonia\resources
+C:\Users\candeias\Desktop\ProjetoCM2026\AppListaTelefonica\AppListaTelefonica\obj\Debug\net8.0\AppListaTelefonica.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\candeias\Desktop\ProjetoCM2026\AppListaTelefonica\AppListaTelefonica\obj\Debug\net8.0\AppListaTelefonica.AssemblyInfoInputs.cache
+C:\Users\candeias\Desktop\ProjetoCM2026\AppListaTelefonica\AppListaTelefonica\obj\Debug\net8.0\AppListaTelefonica.AssemblyInfo.cs
+C:\Users\candeias\Desktop\ProjetoCM2026\AppListaTelefonica\AppListaTelefonica\obj\Debug\net8.0\AppListaTelefonica.csproj.CoreCompileInputs.cache

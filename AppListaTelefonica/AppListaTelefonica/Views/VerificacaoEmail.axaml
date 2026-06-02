@@ -1,0 +1,64 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="AppListaTelefonica.Views.VerificacaoEmailWindow"
+        Title="Verificar Email"
+        Width="400" Height="350"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen">
+
+	<StackPanel Margin="30" Spacing="15">
+
+		<TextBlock Text="Verificação de Email"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,10"/>
+
+		<TextBlock Text="Enviamos um código de 6 dígitos para:"
+                   FontSize="12"
+                   HorizontalAlignment="Center"/>
+
+		<TextBlock x:Name="EmailText"
+                   FontSize="14"
+                   FontWeight="Bold"
+                   Foreground="#4F46E5"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap"/>
+
+		<TextBlock Text="Código" FontWeight="Bold" Margin="0,15,0,0"/>
+		<TextBox x:Name="CodigoBox"
+                 Watermark="000000"
+                 MaxLength="6"
+                 TextAlignment="Center"
+                 FontSize="16"/>
+
+		<Button x:Name="VerificarButton"
+                Content="Verificar"
+                Background="#4F46E5"
+                Foreground="White"
+                Padding="10"
+                CornerRadius="8"
+                Margin="0,10,0,0"/>
+
+		<Button x:Name="ReenviarButton"
+                Content="Reenviar código"
+                Background="Transparent"
+                Foreground="#4F46E5"
+                Cursor="Hand"
+                HorizontalAlignment="Center"/>
+
+		<Border x:Name="ErrorBorder"
+                Background="#FEE2E2"
+                BorderBrush="#EF4444"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="10"
+                IsVisible="False">
+			<TextBlock x:Name="ErrorText"
+                       Foreground="#DC2626"
+                       FontSize="12"
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Center"/>
+		</Border>
+	</StackPanel>
+</Window>
